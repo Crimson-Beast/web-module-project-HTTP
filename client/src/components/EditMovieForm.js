@@ -32,7 +32,7 @@ const EditMovieForm = (props) => {
         });
     }
 
-    const handleSubmit = (e) => {
+    const handleUpdate = (e) => {
 		e.preventDefault();
 		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
 		.then(res => {
@@ -51,7 +51,7 @@ const EditMovieForm = (props) => {
     return (
 	<div className="col">
 		<div className="modal-content">
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleUpdate}>
 				<div className="modal-header">						
 					<h4 className="modal-title">Editing <strong>{movie.title}</strong></h4>
 				</div>
@@ -79,7 +79,7 @@ const EditMovieForm = (props) => {
 									
 				</div>
 				<div className="modal-footer">			    
-					<input type="submit" className="btn btn-info" value="Save"/>
+					<input onClick={handleUpdate} type="submit" className="btn btn-info" value="Save"/>
 					<Link to={`/movies`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
 				</div>
 			</form>
